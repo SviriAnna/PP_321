@@ -13,7 +13,7 @@ import web.service.CarServiceImpl;
 @Controller
 public class CarsController {
     private final CarServiceImpl carSericeImpl;
-    @Autowired
+
     public CarsController(CarServiceImpl carSericeImpl) {
         this.carSericeImpl = carSericeImpl;
     }
