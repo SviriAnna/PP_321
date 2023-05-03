@@ -10,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import web.dao.CarDao;
+import web.dao.CarDaoImpl;
 
 @Configuration
 @EnableWebMvc
@@ -38,6 +40,11 @@ public class WebConfig implements WebMvcConfigurer {
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
+    }
+
+    @Bean(name = "carDaoImpl")
+    public CarDaoImpl getCarDaoImpl() {
+    return new CarDaoImpl();
     }
 
 
