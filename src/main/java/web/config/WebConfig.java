@@ -10,8 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-import web.dao.CarDao;
-import web.dao.CarDaoImpl;
+import web.dao.UserDaoImpl;
 
 @Configuration
 @EnableWebMvc
@@ -28,6 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setCharacterEncoding("UTF-8");
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/pages/");
         templateResolver.setSuffix(".html");
@@ -42,15 +42,16 @@ public class WebConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-    @Bean(name = "carDaoImpl")
-    public CarDaoImpl getCarDaoImpl() {
-    return new CarDaoImpl();
+    @Bean(name = "userDaoImpl")
+    public UserDaoImpl getUserDaoImpl() {
+    return new UserDaoImpl();
     }
 
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setCharacterEncoding("UTF-8");
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
