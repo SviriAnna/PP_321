@@ -1,6 +1,7 @@
 package web.config;
 
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,8 @@ public class AppConfig {
 
     @Bean
     public PlatformTransactionManager txManager() {
-        return new DataSourceTransactionManager(getDataSource());
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        return transactionManager;
     }
 }
