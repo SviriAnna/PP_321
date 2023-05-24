@@ -7,7 +7,9 @@
 <body>
 <h2>Заполните информацию о пользователе</h2>
 <br>
-<form th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}" th:method="patch">
+<form th:action="@{/users/save}" th:object="${user}" th:method="post">
+
+  <input type="hidden" th:value="${user.id}" th:attr="name='id'"/>
 
   <label for="name">Имя</label>
   <input type="text" th:field="*{name}" name="name" id="name" />

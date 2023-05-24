@@ -30,10 +30,10 @@
     <td>
       <button
             type="button"
-            th:onclick="|window.location.href='/users/' + ${user.getId()} + '/edit'|">Изменить пользователя</button>
+            th:onclick="|window.location.href='users/edit?id=' + ${user.getId()}|">Изменить пользователя</button>
       <button
               type="button"
-              th:onclick="|window.location.href='/users/' + ${user.getId()} + '/delete'|">Удалить пользователя</button>
+              th:onclick="|window.location.href='users/delete?id=' + ${user.getId()}|" >Удалить пользователя</button>
 
     </td>
   </tr>
